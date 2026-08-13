@@ -2,23 +2,23 @@
 
     Code
       yt_construct_client("a", "b")
-    Message
+    Output
       <httr2_oauth_client>
-      name: youtube_data_api
-      id: a
-      secret: <REDACTED>
-      token_url: https://oauth2.googleapis.com/token
-      auth: oauth_client_req_auth_header
+      * name     : "youtube_data_api"
+      * id       : "a"
+      * secret   : <REDACTED>
+      * token_url: "https://oauth2.googleapis.com/token"
+      * auth     : "oauth_client_req_auth_header"
 
 ---
 
     Code
       yt_construct_client()
-    Message
+    Output
       <httr2_oauth_client>
-      name: youtube_data_api
-      id: an_id
-      secret: <REDACTED>
-      token_url: https://oauth2.googleapis.com/token
-      auth: oauth_client_req_auth_header
+      * name     : "youtube_data_api"
+      * id       : "an_id"
+      * secret   : <REDACTED>
+      * token_url: "https://oauth2.googleapis.com/token"
+      * auth     : "oauth_client_req_auth_header"
 
