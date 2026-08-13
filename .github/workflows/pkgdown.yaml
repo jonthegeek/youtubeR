@@ -39,7 +39,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Deploy PR preview 🧪
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: JamesIves/github-pages-deploy-action@v4.8.0
         with:
           clean: false
@@ -48,7 +48,7 @@ jobs:
           target-folder: pr/${{ github.event.number }}
 
       - name: Comment with PR site URL 🌐
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
           intPRNumber <- ${{ github.event.pull_request.number }}
           strOwner <- tolower(qcthat::GetGHOwner())
