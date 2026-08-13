@@ -31,7 +31,7 @@ package will prompt for authentication when needed. Once the values are
 cached, the rest of this package will use them by default for that client.
 }
 \examples{
-\dontshow{if (yt_has_client_envvars() && interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (yt_has_client_envvars() && interactive()) withAutoprint(\{ # examplesIf}
 token <- yt_authenticate()
 \dontshow{\}) # examplesIf}
 }

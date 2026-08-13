@@ -40,7 +40,7 @@ A character vector of video ids.
 Retrieves video ids for a particular playlist.
 }
 \examples{
-\dontshow{if (yt_has_client_envvars() && interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (yt_has_client_envvars() && interactive()) withAutoprint(\{ # examplesIf}
 get_playlist_video_ids(playlist_id = get_upload_playlist_id())
 \dontshow{\}) # examplesIf}
 }

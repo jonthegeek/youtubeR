@@ -40,7 +40,7 @@ A list of videos, each of which has a videoId and a videoPublishedAt.
 Retrieve a list of items in a given playlist.
 }
 \examples{
-\dontshow{if (yt_has_client_envvars() && interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (yt_has_client_envvars() && interactive()) withAutoprint(\{ # examplesIf}
 get_playlist_items(playlist_id = get_upload_playlist_id())
 \dontshow{\}) # examplesIf}
 }

@@ -38,7 +38,7 @@ most interest
 Retrieves the processing details for a vector of video IDs
 }
 \examples{
-\dontshow{if (yt_has_client_envvars() && interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (yt_has_client_envvars() && interactive()) withAutoprint(\{ # examplesIf}
 get_upload_playlist_id() |>
   get_playlist_items() |>
   get_video_processing_details()

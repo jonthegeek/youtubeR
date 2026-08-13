@@ -30,7 +30,7 @@ yt_call_api <- function(endpoint,
                         base_url = c(
                           "basic", "upload", "resumable_upload"
                         )) {
-  request <- .prepare_request(
+  request <- prepare_request(
     endpoint = endpoint,
     query = query,
     body = body,
@@ -51,8 +51,8 @@ yt_call_api <- function(endpoint,
 #' @inheritParams yt_call_api
 #'
 #' @return A request ready to perform.
-#' @keywords internal
-.prepare_request <- function(endpoint,
+#' @export
+prepare_request <- function(endpoint,
                              query = NULL,
                              body = NULL,
                              method = NULL,

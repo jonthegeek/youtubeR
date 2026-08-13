@@ -22,6 +22,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Kevin Kent \email{kentmkevin@gmail.com}
   \item Jon Harmon \email{jonthegeek@gmail.com} (\href{https://orcid.org/0000-0003-4781-4346}{ORCID})
 }
 

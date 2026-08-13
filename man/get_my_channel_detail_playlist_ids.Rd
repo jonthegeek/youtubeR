@@ -42,7 +42,7 @@ channel's content.\tabular{lll}{
 Get ids of playlists that contain details about the content of a channel.
 }
 \examples{
-\dontshow{if (yt_has_client_envvars() && interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (yt_has_client_envvars() && interactive()) withAutoprint(\{ # examplesIf}
 get_my_channel_details()
 \dontshow{\}) # examplesIf}
 }
