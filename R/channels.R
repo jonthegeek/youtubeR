@@ -17,14 +17,18 @@
 #'
 #' @examplesIf yt_has_client_envvars() && interactive()
 #' get_my_channel_details()
-get_my_channel_detail_playlist_ids <- function(client = yt_construct_client(),
-                                               cache_disk = getOption(
-                                                 "yt_cache_disk", FALSE
-                                               ),
-                                               cache_key = getOption(
-                                                 "yt_cache_key", NULL
-                                               ),
-                                               token = NULL) {
+get_my_channel_detail_playlist_ids <- function(
+  client = yt_construct_client(),
+  cache_disk = getOption(
+    "yt_cache_disk",
+    FALSE
+  ),
+  cache_key = getOption(
+    "yt_cache_key",
+    NULL
+  ),
+  token = NULL
+) {
   res <- yt_call_api(
     endpoint = "channels",
     query = list(
@@ -39,13 +43,13 @@ get_my_channel_detail_playlist_ids <- function(client = yt_construct_client(),
 
   # For now I'm just doing one quick "well that's weird" check. We should make
   # this more robust.
-  if (length(res$items) != 1) { # nocov start
+  if (length(res$items) != 1) {
+    # nocov start
     cli::cli_abort(
       "Expected 1 channel$items, got {length(res$items)}.",
       class = "unexpected_items_length"
     )
   } # nocov end
-
 
   return(res$items[[1]]$contentDetails$relatedPlaylists)
 }
@@ -61,14 +65,18 @@ get_my_channel_detail_playlist_ids <- function(client = yt_construct_client(),
 #'
 #' @examplesIf yt_has_client_envvars() && interactive()
 #' get_upload_playlist_id()
-get_upload_playlist_id <- function(client = yt_construct_client(),
-                                   cache_disk = getOption(
-                                     "yt_cache_disk", FALSE
-                                   ),
-                                   cache_key = getOption(
-                                     "yt_cache_key", NULL
-                                   ),
-                                   token = NULL) {
+get_upload_playlist_id <- function(
+  client = yt_construct_client(),
+  cache_disk = getOption(
+    "yt_cache_disk",
+    FALSE
+  ),
+  cache_key = getOption(
+    "yt_cache_key",
+    NULL
+  ),
+  token = NULL
+) {
   return(
     get_my_channel_detail_playlist_ids(
       client = client,

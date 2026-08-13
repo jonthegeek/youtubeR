@@ -25,7 +25,8 @@ datetime <- function() {
 .compact <- function(lst, depth = 1, max_depth = 20) {
   if (is.list(lst) && depth <= max_depth) {
     lst <- purrr::map(
-      lst, .compact,
+      lst,
+      .compact,
       depth = depth + 1,
       max_depth = max_depth
     )

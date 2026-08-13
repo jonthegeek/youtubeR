@@ -1,7 +1,6 @@
 # We'll save some API properties as internal data to make them easier to
 # reference in functions.
 
-
 .base_url <- "https://youtube.googleapis.com/"
 .base_url <- paste0(
   base_url,

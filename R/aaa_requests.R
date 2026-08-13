@@ -19,17 +19,21 @@
 #'
 #' @return The result of the call.
 #' @export
-yt_call_api <- function(endpoint,
-                        query = NULL,
-                        body = NULL,
-                        method = NULL,
-                        client = yt_construct_client(),
-                        cache_disk = getOption("youtuberR.cache_disk", FALSE),
-                        cache_key = getOption("youtuberR.cache_key", NULL),
-                        token = NULL,
-                        base_url = c(
-                          "basic", "upload", "resumable_upload"
-                        )) {
+yt_call_api <- function(
+  endpoint,
+  query = NULL,
+  body = NULL,
+  method = NULL,
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL,
+  base_url = c(
+    "basic",
+    "upload",
+    "resumable_upload"
+  )
+) {
   request <- prepare_request(
     endpoint = endpoint,
     query = query,
@@ -52,19 +56,21 @@ yt_call_api <- function(endpoint,
 #'
 #' @return A request ready to perform.
 #' @export
-prepare_request <- function(endpoint,
-                             query = NULL,
-                             body = NULL,
-                             method = NULL,
-                             client = yt_construct_client(),
-                             cache_disk = getOption("youtuberR.cache_disk",
-                                                    FALSE),
-                             cache_key = getOption("youtuberR.cache_key",
-                                                   NULL),
-                             token = NULL,
-                             base_url = c(
-                               "basic", "upload", "resumable_upload"
-                             )) {
+prepare_request <- function(
+  endpoint,
+  query = NULL,
+  body = NULL,
+  method = NULL,
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL,
+  base_url = c(
+    "basic",
+    "upload",
+    "resumable_upload"
+  )
+) {
   base_url <- rlang::arg_match(base_url)
   base_url <- .base_url[[base_url]]
   request <- httr2::request(base_url)
@@ -116,7 +122,8 @@ prepare_request <- function(endpoint,
   # Experiment to see if this ever fails.
   if (all(class(arg_list) == "list")) {
     return(arg_list[arg_present])
-  } else { # nocov start
+  } else {
+    # nocov start
     stop("In the .remove_missing piece you thought you could remove.")
     return(
       structure(
@@ -169,8 +176,7 @@ prepare_request <- function(endpoint,
 #'
 #' @return A prepared body list object with a "json" or "multipart" subclass.
 #' @keywords internal
-.prepare_body <- function(body,
-                          mime_type = NULL) {
+.prepare_body <- function(body, mime_type = NULL) {
   # COMBAK: We should probably do some sort of recursive map to make sure all
   # names at depth are in camelCase.
 

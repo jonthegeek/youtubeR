@@ -65,7 +65,7 @@ test_that("yt_authenticate works", {
   expect_null(yt_authenticate())
 })
 
-# Formatting changed for this & the refresh token is long expired. Ideally this 
+# Formatting changed for this & the refresh token is long expired. Ideally this
 # should be regenerated at some point with a new refresh token.
 
 # with_mock_dir("../api/auth", {

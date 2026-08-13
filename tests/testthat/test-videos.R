@@ -27,7 +27,8 @@ with_mock_dir("../api/videos", {
           privacy_status = "private"
         ),
         recording_date = "2023-04-18T15:10:00.000Z",
-        client = NULL, token = yt_token
+        client = NULL,
+        token = yt_token
       )
     })
     expect_type(upload_id, "character")
@@ -42,7 +43,8 @@ with_mock_dir("../api/videos", {
           description = "A video to test updates.",
           tags = c("tag1")
         ),
-        client = NULL, token = yt_token
+        client = NULL,
+        token = yt_token
       )
     })
     expect_identical(update_id, upload_id)

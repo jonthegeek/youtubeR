@@ -16,7 +16,8 @@
 #' Sys.setenv(YOUTUBE_CLIENT_SECRET = "ABCD-eFg_H")
 browse_gc_credentials <- function() {
   gc_creds_url <- "https://console.cloud.google.com/apis/credentials"
-  if (rlang::is_interactive()) { # nocov start
+  if (rlang::is_interactive()) {
+    # nocov start
     utils::browseURL(gc_creds_url)
   } # nocov end
   return(invisible(gc_creds_url))
@@ -40,10 +41,12 @@ browse_gc_credentials <- function() {
 #' @examples
 #' yt_has_client_envvars()
 #' yt_has_client_envvars("an_id_string", "a_secret_string")
-yt_has_client_envvars <- function(client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
-                                  client_secret = Sys.getenv(
-                                    "YOUTUBE_CLIENT_SECRET"
-                                  )) {
+yt_has_client_envvars <- function(
+  client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
+  client_secret = Sys.getenv(
+    "YOUTUBE_CLIENT_SECRET"
+  )
+) {
   return(nchar(client_id) && nchar(client_secret))
 }
 
@@ -59,10 +62,12 @@ yt_has_client_envvars <- function(client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
 #'
 #' @examples
 #' client <- yt_construct_client()
-yt_construct_client <- function(client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
-                                client_secret = Sys.getenv(
-                                  "YOUTUBE_CLIENT_SECRET"
-                                )) {
+yt_construct_client <- function(
+  client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
+  client_secret = Sys.getenv(
+    "YOUTUBE_CLIENT_SECRET"
+  )
+) {
   if (!yt_has_client_envvars(client_id, client_secret)) {
     cli::cli_abort(
       "Please provide a YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET.",
@@ -100,9 +105,11 @@ yt_construct_client <- function(client_id = Sys.getenv("YOUTUBE_CLIENT_ID"),
 #' @export
 #' @examplesIf yt_has_client_envvars() && interactive()
 #' token <- yt_authenticate()
-yt_authenticate <- function(client = yt_construct_client(),
-                            force = FALSE,
-                            refresh_token = NULL) {
+yt_authenticate <- function(
+  client = yt_construct_client(),
+  force = FALSE,
+  refresh_token = NULL
+) {
   if (force) {
     if (is.null(refresh_token)) {
       token <- NULL
@@ -114,7 +121,8 @@ yt_authenticate <- function(client = yt_construct_client(),
     token <- .get_token_noninteractive(client, refresh_token)
   }
 
-  if (rlang::is_interactive() && is.null(token)) { # nocov start
+  if (rlang::is_interactive() && is.null(token)) {
+    # nocov start
     token <- httr2::oauth_flow_auth_code(
       client = client,
       auth_url = "https://accounts.google.com/o/oauth2/v2/auth",
@@ -183,11 +191,13 @@ yt_authenticate <- function(client = yt_construct_client(),
 #'
 #' @return A [httr2::request()] with oauth authentication information.
 #' @keywords internal
-.yt_req_auth <- function(request,
-                         client = yt_construct_client(),
-                         cache_disk = getOption("youtuberR.cache_disk", FALSE),
-                         cache_key = getOption("youtuberR.cache_key", NULL),
-                         token = NULL) {
+.yt_req_auth <- function(
+  request,
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL
+) {
   if (!is.null(token)) {
     if (inherits(token, "httr2_token")) {
       if (!.is_expired(token[["expires_at"]])) {

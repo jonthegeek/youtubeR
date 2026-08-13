@@ -13,15 +13,19 @@
 #' get_upload_playlist_id() |>
 #'   get_playlist_items() |>
 #'   get_video_processing_details()
-get_video_processing_details <- function(video_ids,
-                                         client = yt_construct_client(),
-                                         cache_disk = getOption(
-                                           "yt_cache_disk", FALSE
-                                         ),
-                                         cache_key = getOption(
-                                           "yt_cache_key", NULL
-                                         ),
-                                         token = NULL) {
+get_video_processing_details <- function(
+  video_ids,
+  client = yt_construct_client(),
+  cache_disk = getOption(
+    "yt_cache_disk",
+    FALSE
+  ),
+  cache_key = getOption(
+    "yt_cache_key",
+    NULL
+  ),
+  token = NULL
+) {
   result <- yt_call_api(
     endpoint = "videos",
     query = list(
@@ -68,16 +72,17 @@ get_video_processing_details <- function(video_ids,
 #'
 #' @return The id of the uploaded video.
 #' @export
-yt_videos_insert <- function(video_path,
-                             snippet = yt_schema_video_snippet(),
-                             localizations = list(),
-                             status = yt_schema_video_status(),
-                             recording_date = datetime(),
-                             client = yt_construct_client(),
-                             cache_disk = getOption("youtuberR.cache_disk",
-                                                    FALSE),
-                             cache_key = getOption("youtuberR.cache_key", NULL),
-                             token = NULL) {
+yt_videos_insert <- function(
+  video_path,
+  snippet = yt_schema_video_snippet(),
+  localizations = list(),
+  status = yt_schema_video_status(),
+  recording_date = datetime(),
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL
+) {
   body <- list(
     metadata = list(
       snippet = snippet,
@@ -114,16 +119,17 @@ yt_videos_insert <- function(video_path,
 #'
 #' @return The id of the updated video.
 #' @export
-yt_videos_update <- function(video_id,
-                             snippet = yt_schema_video_snippet(),
-                             localizations = list(),
-                             status = yt_schema_video_status(),
-                             recording_date = datetime(),
-                             client = yt_construct_client(),
-                             cache_disk = getOption("youtuberR.cache_disk",
-                                                    FALSE),
-                             cache_key = getOption("youtuberR.cache_key", NULL),
-                             token = NULL) {
+yt_videos_update <- function(
+  video_id,
+  snippet = yt_schema_video_snippet(),
+  localizations = list(),
+  status = yt_schema_video_status(),
+  recording_date = datetime(),
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL
+) {
   # HACK: This body should be compared to the existing body for this video.
   # Missing pieces should be filled in from the existing body.
   body <- list(
@@ -160,12 +166,13 @@ yt_videos_update <- function(video_id,
 #'
 #' @return The id of the deleted video.
 #' @export
-yt_videos_delete <- function(video_id,
-                             client = yt_construct_client(),
-                             cache_disk = getOption("youtuberR.cache_disk",
-                                                    FALSE),
-                             cache_key = getOption("youtuberR.cache_key", NULL),
-                             token = NULL) {
+yt_videos_delete <- function(
+  video_id,
+  client = yt_construct_client(),
+  cache_disk = getOption("youtuberR.cache_disk", FALSE),
+  cache_key = getOption("youtuberR.cache_key", NULL),
+  token = NULL
+) {
   result <- yt_call_api(
     endpoint = "videos",
     query = list(id = video_id),
