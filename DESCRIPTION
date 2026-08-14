@@ -1,6 +1,6 @@
 Package: youtubeR
 Title: An Interface to the YouTube API
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: c(
     person("Kevin", "Kent", , "kentmkevin@gmail.com", role = c("aut", "cre")),
     person("Jon", "Harmon", , "jonthegeek@gmail.com", role = "aut",
